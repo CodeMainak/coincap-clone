@@ -1,0 +1,30 @@
+.topbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: #0067ee;
+    background-image: linear-gradient(to right, #075bc9 , #5194ec);
+    padding-bottom: 4.5rem;
+    position: relative;
+}
+.topbar_data{
+    display: flex;
+    justify-content: space-around;
+}
+.topbar_data>div{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 0rem 2rem 1rem 2rem;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    align-items: center;
+}
+.topbar_data>div>span{
+    font-size: 1.5rem;
+}
+.topbar_data>div>label{
+    margin-bottom: 0;
+}

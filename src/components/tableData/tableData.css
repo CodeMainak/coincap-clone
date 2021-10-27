@@ -1,0 +1,8 @@
+.customTable{
+    width:80%;
+    position:relative;
+    top:-6rem;
+    z-index: 10;
+    background-color:white;
+    box-shadow:0px 10px 15px #0097ee;
+}
