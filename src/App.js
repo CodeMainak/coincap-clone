@@ -7,7 +7,16 @@ import Topbar from "./components/topbar/Topbar"
 function App() {
   const [data,setData]=useState();
   const getMyData=async()=>{
-    const res=await axios.get("https://api.coincap.io/v2/assets")
+    // axios.defaults.headers={"Access-Control-Allow-Origin":"*"}
+    const config = {
+      method: 'get',
+      url: "https://api.coincap.io/v2/assets",
+      headers: {
+        // 'Access-Control-Allow-Origin': '*',
+      },
+    };
+  
+    const res=await axios.request(config)
     setData(res.data.data)
     console.log("MyData",res);
   }
