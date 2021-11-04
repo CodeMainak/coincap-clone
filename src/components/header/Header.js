@@ -6,7 +6,7 @@ function Header() {
         <div className="header">
             <div className="header_item 1">
                 <p>Coins</p>
-                <p>Exchanges</p>
+                <p>Exchanges</p> 
                 <p>Swap</p>
             </div>
             <div className="header_item 2"><img src={coincap} alt="logo" className="logo"/></div>

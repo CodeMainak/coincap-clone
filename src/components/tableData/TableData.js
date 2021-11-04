@@ -1,19 +1,32 @@
 import React, { useState,useEffect } from 'react'
+import { connect } from 'react-redux';
+import { NProgress } from "@tanem/react-nprogress";
+import Container from "./../LoaderProgressBar/Container"
+import Bar from "./../LoaderProgressBar/Bar"
+import {getData} from "./../../actions/data"
 import "./tableData.css"
-function TableData({data}) {
+function TableData({data:{data,loading,error}}) {
   const [allData,setAllData]=useState([]);
-  // const [displayData,setDisPlayData]=useState();
+  const [isLoading,setIsLoading]=useState(true)
   const dataPerPage=50;
   const [currentPage,setCurrentPage]=useState(1);
-  console.log("Data",data)
-
- 
   useEffect(() => {
     setAllData(data)
-  }, [data])
+    setIsLoading(loading)
+  }, [data,loading])
   if(!allData) return null
     return (
       <>
+       <NProgress isAnimating={isLoading}>
+          {({ isFinished, progress, animationDuration }) => (
+            <Container
+              isFinished={isFinished}
+              animationDuration={animationDuration}
+            >
+              <Bar progress={progress} animationDuration={animationDuration} />
+            </Container>
+          )}
+        </NProgress>
       <table className="table table-striped container customTable text-secondary">
       <thead>
         <tr>
@@ -42,9 +55,13 @@ function TableData({data}) {
         
       </tbody>
     </table>
-    <div className="topbar"><button className="view_more" onClick={e=>setCurrentPage(currentPage+1)} style={{position:"relative",top:"-80px"}}>View More</button></div>
+    {loading || error ?null:<div className="topbar"><button className="view_more" onClick={e=>setCurrentPage(currentPage+1)} style={{position:"relative",top:"-80px"}}>View More</button></div>}
     </>
     )
 }
 
-export default TableData
+const mapStateToProps=state=>({
+  data:state.data,
+})
+
+export default connect(mapStateToProps,{getData})(TableData)
