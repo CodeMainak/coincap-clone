@@ -55,7 +55,7 @@ function TableData({data:{data,loading,error}}) {
         
       </tbody>
     </table>
-    {loading || error ?null:<div className="topbar"><button className="view_more" onClick={e=>setCurrentPage(currentPage+1)} style={{position:"relative",top:"-80px"}}>View More</button></div>}
+    {loading || data.length===0?null:<div className="topbar"><button className="view_more" onClick={e=>setCurrentPage(currentPage+1)} style={{position:"relative",top:"-80px"}}>View More</button></div>}
     </>
     )
 }
